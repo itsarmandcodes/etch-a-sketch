@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Etch-a-Sketch</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+      <button id="reset"> Reset!</button>
+    <div class='container'>
+    </div>
+
+
+    <script>
+
+    let grid_ammount = prompt("How large would you like the grid to be?")
+    grid_ammount = Number(grid_ammount);
+    total_amount = grid_ammount * grid_ammount;
+
+    console.log(grid_ammount);
+
+    const row = document.querySelector('.container');
+    // grid-template-columns: repeat(16, 1fr);
+    // tell the container div how many rows there should be.
+
+    row.style.gridTemplateColumns = `repeat(${grid_ammount}, 1fr)`;
+
+    // row.setAttribute('style', 'grid-template-columns: repeat(' + grid_ammount + ', 1fr)');
+
+
+    let reset = document.getElementById('reset');
+    reset.addEventListener('click', function(e){
+        window.location.reload();
+    })
+
+
+
+    function addGrid(){
+        // 16x16 divs
+
+        for(i = 0; i < total_amount; i++){
+            let tiles = document.createElement('div');
+            tiles.classList.add('tiles');
+            tiles.addEventListener('mouseover', function(e){
+                e.target.style.backgroundColor = 'black';
+            })
+            row.appendChild(tiles);
+
+        }
+    }
+    addGrid();
+
+    </script>
+  </body>
+</html>
